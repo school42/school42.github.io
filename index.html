@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quiz Interreligiöser Knigge</title>
+        <style>
+            * {
+                text-align: center;
+            }
+            .buttons * {
+                display: inline-block; 
+                margin: 0 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Quiz</h1><br><br>
+        <h2 id="quiz_title">Test</h2>
+        <div id="buttons">
+            <button id="b1" onclick="submit(0)">test1</button>
+            <button id="b2" onclick="submit(1)">test2</button>
+            <button id="b3" onclick="submit(2)">test3</button>
+            <button id="b4" onclick="submit(3)">test4</button>
+        </div>
+    </body>
+
+    <script>
+        var title = document.getElementById("quiz_title");
+        var b1 = document.getElementById("b1");
+        var b2 = document.getElementById("b2");
+        var b3 = document.getElementById("b3");
+        var b4 = document.getElementById("b4");
+        var buttons = document.getElementById("buttons");
+
+        var question = 0;
+        var rights = 0;
+
+        function getQuestion(question) {
+            if(question == 0) {
+                return ["Beten Christen vor dem Essen", "Ja, immer", "Nur manchmal", "In der Regel nicht", "Sie sagen nur \"Amen\""]
+            }
+            if(question == 1) {
+                return ["Wie nennt man die Personen, die in der Religion Islam sind", "Islamen", "Muslimen", "Mohamedanern", "Juden"]
+            }
+            if(question == 2) {
+                return ["Was machen Juden vor dem Essen nicht(also müssen es nicht machen)", "Hände übergiesen", "beten", "Ab den übergiesen leise sein", "Sie müssen alles machen"]
+            }
+            if(question == 3) {
+                return ["Wie verhalten sich jüdische Familien auserhalb", "Kinder bleiben immer bei den Eltern", "Die Familie bleibt wenn möglich zusammen", "Mann und Frau laufen getrennt", "Es gibt keine Regeln"]
+            }
+            if(question == 4) {
+                return ["Gibt es in Christentum eine Kleidervorschrift", "Ja, auch heute noch", "Ja, aber vor ca. 50 Jahren", "Das ist doch schon über 200 Jahre her", "Es gab noch nie eine"]
+            }
+            if(question == 5) {
+                return ["Question 6", "Answer1", "Answer2", "Answer3", "Answer4"]
+            }
+            if(question == 6) {
+                return ["Question 7", "Answer1", "Answer2", "Answer3", "Answer4"]
+            }
+            if(question == 7) {
+                return ["Question 8", "Answer1", "Answer2", "Answer3", "Answer4"]
+            }
+            if(question == 8) {
+                return ["Question 9", "Answer1", "Answer2", "Answer3", "Answer4"]
+            }
+            if(question == 9) {
+                return ["Question 10", "Answer1", "Answer2", "Answer3", "Answer4"]
+            }
+        }
+
+        function getSolution(question) {
+            if(question == 0) {
+                return 0
+            }
+            if(question == 1) {
+                return 1
+            }
+            if(question == 2) {
+                return 1
+            }
+            if(question == 3) {
+                return 3
+            }
+            if(question == 4) {
+                return 2
+            }
+            if(question == 5) {
+                return 1
+            }
+            if(question == 6) {
+                return 0
+            }
+            if(question == 7) {
+                return 1
+            }
+            if(question == 8) {
+                return 2
+            }
+            if(question == 9) {
+                return 3
+            }
+        }
+
+        function getAnswer(rights) {
+            if(rights == 0) {
+                return "Hast du es dir überhaupt durchgelesen?"
+            }
+            if(rights == 1) {
+                return "Zum Glück ist das hier keine Arbeit."
+            }
+            if(rights == 2) {
+                return "Sind meine Texte so schwer leserlich?"
+            }
+            if(rights == 3) {
+                return "Lese es dir besser nochmal durch."
+            }
+            if(rights == 4) {
+                return "Du bist unter der Hälfte."
+            }
+            if(rights == 5) {
+                return "Wenigstens ist die Hälfte richtig."
+            }
+            if(rights == 6) {
+                return "Du bist über der Hälfte"
+            }
+            if(rights == 7) {
+                return "Immerhin 7 richtig"
+            }
+            if(rights == 8) {
+                return "Das ist eine gute Leistung"
+            }
+            if(rights == 9) {
+                return "Fast. Das nächste mal schaffst du es."
+            }
+            if(rights == 10) {
+                return "Alles richtig."
+            }
+        }
+
+        function prepare() {
+            var texts = getQuestion(question)
+            title.innerHTML = texts[0];
+            b1.innerHTML = texts[1];
+            b2.innerHTML = texts[2];
+            b3.innerHTML = texts[3];
+            b4.innerHTML = texts[4];
+        }
+
+        function submit(button) {
+            var solution = getSolution(question)
+            if(button == solution) {
+                rights++;
+            }
+            question++
+            if(question != 10) {
+                prepare(); 
+            }else {
+                buttons.innerHTML = getAnswer(rights) + "<br>Du hast " + rights + " Fragen richtig."
+            }
+        }
+
+        prepare()
+    </script>
+</html>
